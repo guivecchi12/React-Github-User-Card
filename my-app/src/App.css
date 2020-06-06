@@ -36,3 +36,53 @@
     transform: rotate(360deg);
   }
 }
+
+.app{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  border: 2px solid rgba(144, 217, 223, 0.274);
+  border-radius: 20px 2px;
+  padding: 0 10px;
+  background-image: linear-gradient(to top, rgb(230, 247, 230), white);
+
+}
+.user p{
+  margin: 5px;
+}
+p.num{
+  margin-top: 15px;
+}
+.user .title{
+  font-weight: bold;
+}
+.followers{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  margin:20px;
+  border: 2px solid rgba(144, 217, 223, 0.274);
+  border-radius: 20px;
+  padding: 20px;
+  background-image: linear-gradient(to right, lightblue, white);
+}
+.follow{
+  margin:20px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button{
+  margin-top:20px;
+}
+
+.hide{
+  display:none;
+}
