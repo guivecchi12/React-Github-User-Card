@@ -10,13 +10,14 @@ class App extends React.Component {
     followers: "",
     avatar: "",
     followersProfile: [],
-    showing: false
+    showing: false,
+    user: "jakewmeyer"
   };
 
   componentDidMount(){
     console.log("component Mounted");
     axios 
-      .get("https://api.github.com/users/jakewmeyer")
+      .get(`https://api.github.com/users/${this.user}`)
       .then(res =>{
         // console.log (res);
         const data = res.data;
@@ -27,10 +28,10 @@ class App extends React.Component {
 
   fetchFollowers = () =>{
     axios
-      .get("https://api.github.com/users/jakewmeyer/followers")
+      .get(`https://api.github.com/users/${this.user}/followers`)
       .then(res=>{
         console.log("followers", res);
-        this.setState({followersProfile: res.data});
+        this.setState({...this.state, followersProfile: res.data});
         })
       .catch(err => {console.log(err)});
     }
@@ -42,22 +43,48 @@ class App extends React.Component {
     const butt = document.querySelector("button");
 
     if(this.state.showing === true){
-      this.setState({showing: false});
+      this.setState({...this.state, showing: false});
       follower.classList.toggle("hide");
       butt.textContent = "See Followers";
       }
     else{
-        this.setState({showing: true});
+        this.setState({...this.state, showing: true});
         follower.classList.toggle("hide");
         butt.textContent = "Hide Followers";
       };
   };
 
+  handleChanges = e => {
+    this.setState({ ...this.state, user: e.target.value });
+  };
+
+  searchUser = e =>{
+    e.preventDefault();
+    axios
+      .get(`https://api.github.com/users/${this.user}`)
+      .then(res=>{
+        const data = res.data;
+        this.setState({...this.state, name: data.name, bio: data.bio, followers: data.followers, avatar: data.avatar_url})
+      })
+  }
+
   render(){
     console.log("render");
     return(
       <div className = "app">
-        <h1>GitHub</h1>
+        <div className= "header">
+          <h1>GitHub</h1>
+          <input
+          type="text"
+          name="user"
+          value={this.state.user}
+          onChange={this.handleChanges}
+          />
+          <button className="search" onClick={this.searchUser}>
+            Search
+          </button>
+        </div>
+        
         <div className="user">
           <h3>{this.state.name}</h3>
           <img width = "100" src={this.state.avatar} key={this.state.avatar} alt = "avatar" />
