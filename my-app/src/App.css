@@ -79,7 +79,7 @@ p.num{
   align-items: center;
 }
 
-button{
+.seeFollowers{
   margin-top:20px;
   border-radius: 20px;
   padding:10px;
@@ -88,4 +88,18 @@ button{
 
 .hide{
   display:none;
+}
+
+.search{
+  margin: 5px;
+  border-radius: 5px;
+  padding:3px;
+}
+
+.header{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 300px;
+  margin-left:400px;
 }
