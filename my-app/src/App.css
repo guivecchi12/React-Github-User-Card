@@ -81,6 +81,9 @@ p.num{
 
 button{
   margin-top:20px;
+  border-radius: 20px;
+  padding:10px;
+  background-color: rgba(101, 172, 212, 0.336);
 }
 
 .hide{

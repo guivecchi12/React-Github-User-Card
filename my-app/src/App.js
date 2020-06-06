@@ -39,13 +39,17 @@ class App extends React.Component {
     e.preventDefault();
     this.fetchFollowers();
     const follower = document.querySelector(".followers");
+    const butt = document.querySelector("button");
+
     if(this.state.showing === true){
       this.setState({showing: false});
-      follower.classList.add("hide");
+      follower.classList.toggle("hide");
+      butt.textContent = "See Followers";
       }
     else{
         this.setState({showing: true});
         follower.classList.toggle("hide");
+        butt.textContent = "Hide Followers";
       };
   };
 
@@ -64,7 +68,7 @@ class App extends React.Component {
       <button onClick={this.addFollower}>
         See Followers
       </button>
-        <div className="followers">
+        <div className="followers hide">
           {this.state.followersProfile.map(prof=>{
             return(
               <span className="follow">
