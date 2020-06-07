@@ -30,7 +30,9 @@ class App extends React.Component {
       .get(`https://api.github.com/users/${this.state.user}/followers`)
       .then(res=>{
         console.log("followers", res);
-        this.setState({...this.state, followersProfile: res.data});
+        if(res.data !== []){
+          this.setState({...this.state, followersProfile: res.data});
+        }
         })
       .catch(err => {console.log(err)});
     }
@@ -59,7 +61,8 @@ class App extends React.Component {
     e.preventDefault();
     const follower = document.querySelector(".followers");
     follower.classList.add("hide");
-    follower.textContent = "Hide Followers";
+    const button = document.querySelector(".seeFollowers")
+    button.textContent = "See Followers";
 
     axios
       .get(`https://api.github.com/users/${this.state.user}`)
@@ -100,15 +103,17 @@ class App extends React.Component {
           See Followers
         </button>
           <div className="followers hide">
-            {this.state.followersProfile.map(prof=>{
-              return(
-                <span className="follow">
-                  <h3>{prof.login}</h3>
-                  <img width = "100" src={prof.avatar_url} key={prof.avatar_url} alt = "avatar" />
-                </span>
-                );
-              })
+            { this.state.followersProfile !== [] ?
+              this.state.followersProfile.map(prof=>{
+                return(
+                  <span className="follow">
+                    <h3>{prof.login}</h3>
+                    <img width = "100" src={prof.avatar_url} key={prof.avatar_url} alt = "avatar" />
+                  </span>
+                  );
+                }) : <p>No Followers</p>
             }
+            
           </div>
         </div>
       </div>
