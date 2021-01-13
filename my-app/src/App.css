@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  border: 2px solid rgba(144, 217, 223, 0.274);
+  border-radius: 20px 2px;
+  padding: 0 10px;
+  background-image: linear-gradient(to top, rgb(230, 247, 230), white);
+
+}
+.user p{
+  margin: 5px;
+}
+p.num{
+  margin-top: 15px;
+}
+.user .title{
+  font-weight: bold;
+}
+.followers{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  margin:20px;
+  border: 2px solid rgba(144, 217, 223, 0.274);
+  border-radius: 20px;
+  padding: 20px;
+  background-image: linear-gradient(to right, lightblue, white);
+  
+}
+.follow{
+  margin:20px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seeFollowers{
+  margin-top:20px;
+  border-radius: 20px;
+  padding:10px;
+  background-color: rgba(101, 172, 212, 0.336);
+}
+
+.hide{
+  display:none;
+}
+
+.search{
+  margin: 5px;
+  border-radius: 5px;
+  padding:3px;
+}
+
+.header{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 300px;
+  margin-left:400px;
+}
